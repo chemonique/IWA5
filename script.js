@@ -1,62 +1,43 @@
-// FREE_WARNING = 'Free shipping only applies to single customer orders'
-// BANNED_WARNIN = 'Unfortunately we do not ship to your country of residence'
-// NONE_SELECTED = '0'
+/*shipping*/
 
-// if (location = RSA) { shipping === 400 && currency === 'R' }
-
-// if location = NAM
-// shipping = 600 
-// else shipping = 800
-
-// shoes = 300 * 1
-// toys - 100 * 5
-// shirts = 150 * 'NONE_SELECTED'
-// batteries 35 * 2
-// pens = 5 * 'NONE_SELECTED' 
-
-// shipping = null
-// currency = $
-
-// if (shoes + batteries + pens + shirts > 1000 &&  ) {
-// 	if (location = NAM && customers < 2) {
-// 			if (location = RSA)
-// 		    shipping = 0 || calcShipping
-// 		}
-// 	}
-// }
-
-// if (shipping = 0) && (customers !=== 1) { console.log(WARNING) }
-
-// location = 'NK' ? console.log(WARNING) : console.log('price', currency, shoes + batteries + pens + shirts + shipping)
-
-// customers = '1'
-// const location = 'RSA'
-// currency = null
-
-
-/*shipping*/ 
-const area = 'AU';
+const BANNED_WARNIN = 'Unfortunately we do not ship to your country of residence'
+const area = 'RSA';
 let shipping = 0;
-let currency='$'
-const WARNING = 'We DO NOT ship to North Korea'
 
 if (area == 'RSA'){
     shipping = 400;
     currency ='R';
-    console.log(shipping,currency)
-}
-
-if (area == 'NAM'){
+} else if (area == 'NAM'){
     shipping = 600;
-    console.log(shipping,currency)
-} 
+    } else if (area == 'NK'){
+        console.log(BANNED_WARNIN) 
+        } else {
+        shipping = 800;
+        }
 
-if (area == 'NK'){
-    console.log(WARNING)
-} else{
-    shipping = 800;
-    console.log(shipping,currency)
+/*cost */
+
+let cost = 0 ;
+const NONE_SELECTED=0;
+const customers=2;
+const FREE_WARNING = 'Free shipping only applies to single customer orders';
+
+const shoes = 300*1;
+const toys = 100*5 ;
+const shirts = 150* NONE_SELECTED;
+const batteries=35*2;
+const pens = 5*NONE_SELECTED;
+
+cost= shoes+toys+ shirts+ batteries+ pens;
+
+//total cost
+if ((cost>=1000) && (area =='RSA'||'NAM')){
+    shipping=0
+    if ((customers!==1) && (shipping ==0)) {
+        console.log(FREE_WARNING)
+    }else {
+        console.log(currency,cost+shipping)
+    }
+}else {
+    console.log(currency,cost+shipping)
 }
-
-
-
